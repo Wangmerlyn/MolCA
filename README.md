@@ -98,6 +98,24 @@ python stage1.py --root 'data/kv_data' --gtm --lm --devices '[0]'  --filename mo
 python stage2.py --devices '[0]' --filename chebi_evaluation --stage2_path "all_checkpoints/share/chebi.ckpt" --opt_model 'facebook/galactica-1.3b' --mode eval --prompt '[START_I_SMILES]{}[END_I_SMILES]. ' --tune_gnn --llm_tune lora --inference_batch_size 8 --root "data/ChEBI-20_data" --peft_dir "all_checkpoints/share/chebi_lora" --init_checkpoint all_checkpoints/share/chebi.ckpt;
 ```
 
+## Modifications
+
+### Installation
+```bash 
+bash install_env.sh
+cd data
+wget https://huggingface.co/datasets/acharkq/PubChem324kV2/resolve/main/PubChem324kV2.zip
+unzip PubChem324kV2.zip
+cd ..
+```
+
+### Download Checkpoints
+```bash
+cd all_checkpoints
+wget https://huggingface.co/acharkq/MolCA/resolve/main/stage1.ckpt
+wget https://huggingface.co/acharkq/MolCA/resolve/main/stage2.ckpt
+
+
 ## Citation
 
 If you use our codes or checkpoints, please cite our paper:
